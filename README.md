@@ -1,5 +1,5 @@
 # TSDRE
-This is the code for our ACL 2024 paper [**Timeline-based Sentence Decomposition with In-Context Learning for Temporal Fact Extraction**]([2405.10288 (arxiv.org)](https://arxiv.org/pdf/2405.10288)).
+This is the code for our ACL 2024 paper [**Timeline-based Sentence Decomposition with In-Context Learning for Temporal Fact Extraction**](https://arxiv.org/pdf/2405.10288).
 
 Our work involves training multiple models and calling the ChatGPT API, making it difficult to run our code directly. Therefore, this repository mainly provides datasets for your interest in our work, as well as timeline-based decomposition results for your reference.
 
