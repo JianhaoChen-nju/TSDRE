@@ -1,0 +1,123 @@
+First, I will give you a TEXT, and secondly, I will give you the TIME contained in the TEXT. You need to sort out the events that occurred at each time I provided based on the TEXT. The DECOMPOSITION format is required to contain a time point and corresponding events in each sentence. Each sentence contains the complete elements of the event, such as subject, predicate, and object. DECOMPOSITION ends with </s>.
+There are two evaluation criteria for this task: Precision and Recall. The definitions of Precision and Recall under this task are as follows:
+Precision: Whether the time at which each event occurred is given correctly. 
+Recall: Whether all events that occurred at each time are given completely.
+
+I will show you some examples. At the same time, i will give you human feedback for decomposition results in these examples. I need you to learn from these examples and feedback how to decompose TEXT correctly and completely:
+
+EXAMPLE1:
+TEXT:
+The Duchy of Magdeburg ( German : Herzogtum Magdeburg ) was a province of Brandenburg - Prussia from 1680 to 1701 and a province of the German Kingdom of Prussia from 1701 to 1807 .
+TIME:
+['from 1680 to 1701', 'from 1701 to 1807']
+DECOMPOSITION:
+From 1680 to 1701: The Duchy of Magdeburg was a province of Brandenburg-Prussia.
+From 1701 to 1807: The Duchy of Magdeburg was a province of the German Kingdom of Prussia.
+</s>
+Human feedback for decomposition results:
+Precision: very good.
+Recall: very good.
+
+EXAMPLE2:
+TEXT:
+From its foundation in 1921 until moving to Ashton Gate in 2014 the Memorial Ground was the home to Bristol Rugby .
+TIME:
+['1921', '2014']
+DECOMPOSITION:
+1921: The Memorial Ground was founded and became the home to Bristol Rugby.
+2014: The Memorial Ground moved to Ashton Gate.
+</s>
+Human feedback for decomposition results:
+Precision: Not good. It was not the Memorial Ground that was founded in 1921 but Bristol Rugby. Besides, it was not the Memorial Ground but Bristol Rugby that moved to Ashton Gate.
+Recall: Not good. Two events are not recalled: In 1921 Bristol Rugby was founded and in 2014 Bristol Rugby moved to Ashton Gate.
+A correct and complete decomposition is as follows:
+1921: Bristol Rugby was founded and the Memorial Ground the home to Bristol Rugby.
+2014: Bristol Rugby moved to Ashton Gate.
+
+EXAMPLE3:
+TEXT:
+Alexander Mackenzie , PC ( January 28 , 1822 \u2013 April 17 , 1892 ) , was a building contractor and newspaper editor , and was the second Prime Minister of Canada , from November 7 , 1873 to October 8 , 1878 .
+TIME:
+['January 28, 1822', 'November 7, 1873', 'October 8, 1878', 'April 17, 1892']
+DECOMPOSITION:
+January 28, 1822: Alexander Mackenzie, PC, was born.
+November 7, 1873: Alexander Mackenzie started serving as the second Prime Minister of Canada.
+October 8, 1878: Alexander Mackenzie ended his term as the second Prime Minister of Canada.
+April 17, 1892: Alexander Mackenzie passed away.
+</s>
+Human feedback for decomposition results:
+Precision: very good.
+Recall: very good.
+
+EXAMPLE4:   
+TEXT:
+Pope Benedict XV ( Latin : Benedictus XV ; Italian : Benedetto XV ) born Giacomo Paolo Giovanni Battista della Chiesa , ( 21 November 1854 \u2013 22 January 1922 ) , was Pope from 3 September 1914 until his death in 1922 .
+TIME:
+['21 November 1854', '22 January 1922', '3 September 1914', '1922']
+DECOMPOSITION:
+21 November 1854: Pope Benedict XV, born Giacomo Paolo Giovanni Battista della Chiesa, was born.
+22 January 1922: Pope Benedict XV passed away.
+3 September 1914: Pope Benedict XV started serving as Pope.
+1922: Pope Benedict XV ended serving as Pope.
+</s>
+Human feedback for decomposition results:
+Precision: very good.
+Recall: not good. In 22 January 1922, Pope Benedict XV passed away and was no longer Pope. In 1922: Pope Benedict XV passed away and ended serving as Pope.
+A correct and complete decomposition is as follows:
+21 November 1854: Pope Benedict XV, born Giacomo Paolo Giovanni Battista della Chiesa, was born.
+22 January 1922: Pope Benedict XV passed away and ended serving as Pope.
+3 September 1914: Pope Benedict XV started serving as Pope.
+1922: Pope Benedict XV passed away and ended serving as Pope.
+
+EXAMPLE5:
+TEXT:
+He received : Serbian NIN Prize 1978 and Andri\u0107 Award 1987 , Swedish PEN Tucholsky Award ( 1993 ) , German Herder Prize ( 1995 ) , Montenegrin Njego\u0161 Award ( 2009 ) and 13th July award ( 2004 ) , Slovenian Vilenica Award ( 2003 ) , Croatian Vladimir Nazor Award ( 2008 ) etc .
+TIME:
+['1978', '1987', '1993', '1995', '2003', '2004', '2008', '2009']
+DECOMPOSITION:
+1978: He received the Serbian NIN Prize.
+1987: He received the Andrić Award.
+1993: He received the Swedish PEN Tucholsky Award.
+1995: He received the German Herder Prize.
+2003: He received the Slovenian Vilenica Award.
+2004: He received the 13th July award.
+2008: He received the Croatian Vladimir Nazor Award.
+2009: He received the Montenegrin Njegoš Award.
+</s>
+Human feedback for decomposition results:
+Precision: very good.
+Recall: very good.
+
+EXAMPLE6:
+TEXT:
+It is one of the most famous old districts in Poland today and was the center of Poland ' s political life from 1038 until King Sigismund III Vasa relocated his court to Warsaw in 1596 .
+TIME:
+['1038', '1596']
+DECOMPOSITION:
+1038: It was the center of Poland's political life.
+1596: King Sigismund III Vasa relocated his court to Warsaw.
+</s>
+Human feedback for decomposition results:
+Precision: very good.
+Recall: not good. In 1596 it was no longer the center of Poland ' s political life.
+A correct and complete decomposition is as follows:
+1038: It was the center of Poland's political life.
+1596: It was no longer the center of Poland ' s political life since King Sigismund III Vasa relocated his court to Warsaw.
+
+EXAMPLE7:
+TEXT:
+He played for Gloucestershire between 1920 and 1921 .
+TIME:
+['1920', '1921']
+DECOMPOSITION:
+1920: He played for Gloucestershire.
+1921: He played for Gloucestershire.
+</s>
+Human feedback for decomposition results:
+Precision: not good. This decomposition does not convey the meaning that he started playing for Gloucestershire in 1920 and ended playing for Gloucestershire in 1921.
+Recall: very good.
+A correct and complete decomposition is as follows:
+1920: He started playing for Gloucestershire.
+1921: He ended playing for Gloucestershire.
+
+Now process the following TEXT and follow my examples above for the DECOMPOSITION format:
